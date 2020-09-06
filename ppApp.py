@@ -13,7 +13,7 @@ edit=0
 
 def pp():
 	while edit==0:
-		print(Back.BLUE+ Fore.YELLOW+ "Profi Resmi İndirici")
+		print(Back.BLUE+ Fore.YELLOW+ "Profil Resmi İndirici")
 		hesap=input("Hesap adını giriniz: @")
 		hesap=hesap.casefold()
 		print()
