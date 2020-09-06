@@ -11,8 +11,9 @@ init(autoreset="true")
 
 edit=0
 
-def download():
+def pp():
 	while edit==0:
+		print(Back.BLUE+ Fore.YELLOW+ "Profi Resmi İndirici")
 		hesap=input("Hesap adını giriniz: @")
 		hesap=hesap.casefold()
 		print()
@@ -37,9 +38,8 @@ def download():
 			html_page = urllib.request.urlopen(url)
 			soup = BeautifulSoup(html_page, "html.parser")
 			for link in soup.findAll('a', attrs={'href': re.compile("^https://scontent")}):
-				print(Fore.RED+ "Kullanıcının profil resmi, uygulamanın bulunduğu dizine indirilmiştir")
-				print("İsteyenler İçin Resmin Bağlantısı:")    
-				print(link.get('href'))
+				print(Fore.GREEN+ "Kullanıcının profil resmi, uygulamanın bulunduğu dizine indirilmiştir")   
+				link.get('href')
 	
 			urllib.request.urlretrieve(link.get('href'), hesap+".jpg")
 			break
@@ -47,20 +47,73 @@ def download():
 		except UnboundLocalError:
 			print(Fore.RED+ "HATA: Instagram hesabı veya profil resmi bulunamadı \n")
 			break 
+	
+def story():
+	while edit==0:
+		print(Back.BLUE+ Fore.YELLOW+ "Hikaye İndirici")
+		hesap=input("Hesap adını giriniz: @")
+		hesap=hesap.casefold()
+		print()
+		print(Fore.YELLOW+ "@" +hesap+ " adlı kişinin son paylaştığı hikayeyi indireceksiniz. \nHesap adını değiştirmek için 0'a basın \nDevam etmek için herhangi bir tuşuna basın")
 		
+		try:	
+			düzenle=int(input())
+		except ValueError:
+			düzenle=1
+		if düzenle==0:
+			continue
+			os.system('cls')  
+			os.system('clear')
+		elif düzenle==1:
+			break		
+		else:
+			break
 
+	while True:
+		try:
+			url="https://www.instadp.com/stories/"+hesap
+			html_page = urllib.request.urlopen(url)
+			soup = BeautifulSoup(html_page, "html.parser")
+			for link in soup.findAll('a', attrs={'href': re.compile("^https://scontent")}):   
+				link.get('href')
+
+			print("Hesabın son paylaştığı story fotoğraf ise 1\nHikaye video ise 2'e basınız:")
+			print("(GIF veya InstaMusic içeren storyler de video kabul edilmektedir)")
+			save=int(input())
+
+			if save==2:
+				urllib.request.urlretrieve(link.get('href'), hesap+".mp4")
+				print(Fore.GREEN+ "Hikaye, video olarak kaydedildi")
+				break
+
+			elif save==1:
+				urllib.request.urlretrieve(link.get('href'), hesap+".png")
+				print(Fore.GREEN+ "Hikaye, resim olarak kaydedildi")
+				break
+		except UnboundLocalError:
+			print(Fore.RED+ "HATA: Instagram hesabı veya hikaye bulunamadı \n")
+			break 
+	
 while True:
 	os.system('cls')  
 	os.system('clear')
-  
-	print(Fore.RED+ "*" *40)
-	print(Back.YELLOW+ Fore.BLACK+ "INSTAGRAM PROFIL PICTURE DOWNLOADER")
-	print(Fore.RED+ "*" *40)
-	
-	download()
+
+	print(Fore.BLUE+ "*" *40)
+	print(Fore.BLUE+ "*                                      *")
+	print(Back.YELLOW+ Fore.BLACK+ "* INSTAGRAM PROFIL PICTURE DOWNLOADER  *")
+	print(Fore.BLUE+ "*                                      *")
+	print(Fore.BLUE+ "*" *40)
+
+	islem=int(input("Bir hesabın profil resmini indirmek için 1\nBir hesabın son hikayesini indirmek için 2: "))
+	print()
+	if islem==1:
+		pp()
+	elif islem==2:
+		story()
+
 	
 	print()
-	print(Fore.YELLOW+ "Uygulamayı yeniden Kullanmak için 1'e basınız \nUygulamadan çıkış yapmak için 0'a basınız:")
+	print(Fore.YELLOW+ "Ana menüye dönüş yapmak için 1'e basınız \nUygulamadan çıkış yapmak için 0'a basınız:")
 	con=int(input())
 	
 	if con==1:
@@ -71,7 +124,7 @@ while True:
 		print(Fore.RED+ "Yanlış bir komut girdiniz. Çıkış yapılıyor...")
 		break
 
-print(Fore.GREEN+ "Dolyetyus, THT, 2020")
 print(Fore.RED+ Back.GREEN+ "Çıkış yapmak için herhangi bir tuşa basın")
+print(Fore.GREEN+ "Dolyetyus, 2020")
 input()
 
