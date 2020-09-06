@@ -1,5 +1,4 @@
 colorama
 bs4
 requests
-webbrowser
 urllib
