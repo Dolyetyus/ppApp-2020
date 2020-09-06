@@ -1,5 +1,5 @@
 On kali, use this command to download libraries:
-pip install -r requirements
+pip install -r requirements.txt
 
 İstenilen kişinin yüklemesine bağlı olarak profil resimlerini FULL HD (1080p) çözünürlüğünde indirilmesini sağlar.
 Uygulama daha en temel aşamadadır. İleri düzeyde bir "Instagram" uygulaması yapmak üzere daha geliştirilecektir.
