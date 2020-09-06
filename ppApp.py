@@ -46,8 +46,21 @@ def pp():
 			break
 
 		except UnboundLocalError:
+			url="https://www.instadp.com/fullsize/"+hesap
+			html_page = urllib.request.urlopen(url)
+			soup = BeautifulSoup(html_page, "html.parser")
+			for link in soup.findAll('a', attrs={'href': re.compile("^https://instagram")}):
+				print(Fore.GREEN+ "Kullanıcının profil resmi, uygulamanın bulunduğu dizine indirilmiştir")
+				print(Back.RED+ "Instagram kaynaklı olarak indirilen resim FULL HD çözünürlüğünde değildir!")   
+				link.get('href')
+	
+			urllib.request.urlretrieve(link.get('href'), hesap+".jpg")
+			break
+
+		except:
 			print(Fore.RED+ "HATA: Instagram hesabı veya profil resmi bulunamadı \n")
 			break 
+
 	
 def story():
 	while edit==0:
