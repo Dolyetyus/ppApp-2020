@@ -17,10 +17,11 @@ def pp():
 		hesap=input("Hesap adını giriniz: @")
 		hesap=hesap.casefold()
 		print()
-		print(Fore.YELLOW+ "@" +hesap+ " adlı kişinin profil resmini indireceksiniz. \nHesap adını değiştirmek için 0'a basın \nDevam etmek için herhangi bir tuşuna basın")
-		
+		print(Fore.YELLOW+ "@" +hesap+ " adlı kişinin profil resmini indireceksiniz. \nHesap adını değiştirmek için [0]\nDevam etmek için herhangi bir tuşuna basın")
+
 		try:	
 			düzenle=int(input())
+			print()
 		except ValueError:
 			düzenle=1
 		if düzenle==0:
@@ -54,10 +55,11 @@ def story():
 		hesap=input("Hesap adını giriniz: @")
 		hesap=hesap.casefold()
 		print()
-		print(Fore.YELLOW+ "@" +hesap+ " adlı kişinin son paylaştığı hikayeyi indireceksiniz. \nHesap adını değiştirmek için 0'a basın \nDevam etmek için herhangi bir tuşuna basın")
-		
+		print(Fore.YELLOW+ "@" +hesap+ " adlı kişinin son paylaştığı hikayeyi indireceksiniz. \nHesap adını değiştirmek için [0] \nDevam etmek için herhangi bir tuşuna basın")
+
 		try:	
 			düzenle=int(input())
+			print()
 		except ValueError:
 			düzenle=1
 		if düzenle==0:
@@ -77,8 +79,8 @@ def story():
 			for link in soup.findAll('a', attrs={'href': re.compile("^https://scontent")}):   
 				link.get('href')
 
-			print("Hesabın son paylaştığı story fotoğraf ise 1\nHikaye video ise 2'e basınız:")
-			print("(GIF veya InstaMusic içeren storyler de video kabul edilmektedir)")
+			print("Hesabın son paylaştığı hikaye fotoğraf ise [1]\nHesabın son paylaştığı hikaye video ise [2]:")
+			print("(GIF veya InstaMusic içeren storyler de video kabul edilmektedir,\nDosya biçimini yanlış seçerseniz, indirilen dosya açılmaz)")
 			save=int(input())
 
 			if save==2:
@@ -91,7 +93,7 @@ def story():
 				print(Fore.GREEN+ "Hikaye, resim olarak kaydedildi")
 				break
 		except UnboundLocalError:
-			print(Fore.RED+ "HATA: Instagram hesabı veya hikaye bulunamadı \n")
+			print(Fore.RED+ "HATA: Instagram hesabı gizli veya hikaye bulunamadı \n")
 			break 
 	
 while True:
@@ -104,7 +106,7 @@ while True:
 	print(Fore.BLUE+ "*                                      *")
 	print(Fore.BLUE+ "*" *40)
 
-	islem=int(input("Bir hesabın profil resmini indirmek için 1\nBir hesabın son hikayesini indirmek için 2: "))
+	islem=int(input("Bir hesabın profil resmini indirmek için [1]\nBir hesabın son hikayesini indirmek için [2]: "))
 	print()
 	if islem==1:
 		pp()
@@ -113,7 +115,7 @@ while True:
 
 	
 	print()
-	print(Fore.YELLOW+ "Ana menüye dönüş yapmak için 1'e basınız \nUygulamadan çıkış yapmak için 0'a basınız:")
+	print(Fore.YELLOW+ "Ana menüye dönüş yapmak için [1] \nUygulamadan çıkış yapmak için [0]: ")
 	con=int(input())
 	
 	if con==1:
@@ -127,4 +129,3 @@ while True:
 print(Fore.RED+ Back.GREEN+ "Çıkış yapmak için herhangi bir tuşa basın")
 print(Fore.GREEN+ "Dolyetyus, 2020")
 input()
-
